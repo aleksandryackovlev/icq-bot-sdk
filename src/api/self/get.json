@@ -1,28 +1,29 @@
 {
-    "get": {
-        "summary": "Получить информацию о боте",
-        "description": "Метод можно использовать для проверки валидности токена.",
-        "operationId": "getInfo",
-        "tags": [
-            "self"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#/token"
+  "get": {
+    "operationId": "selfGet",
+    "summary": "Get info about the bot",
+    "description": "The method can be used to check if token is valid.",
+    "operationId": "getInfo",
+    "tags": [
+      "self"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success. The server has returned the info about the bot.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../schemas.json#/bot"
             }
-        ],
-        "responses": {
-            "200": {
-                "description": "Запрос успешно обработан. Сервер вернул информацию о боте.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "../schemas.json#/bot"
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }
 
