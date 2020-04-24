@@ -1,0 +1,25 @@
+{
+    "get": {
+        "summary": "Изменить название чата",
+        "description": "Для вызова этого метода бот должен быть администратором в чате.",
+        "tags": [
+            "chats"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#token"
+            },
+            {
+                "$ref": "../params.json#groupOrChannelId"
+            },
+            {
+                "$ref": "../params.json#groupOrChannelTitle"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../responses.json#200ok"
+            }
+        }
+    }
+}

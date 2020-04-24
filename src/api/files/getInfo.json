@@ -1,0 +1,28 @@
+{
+    "get": {
+        "summary": "Получить информацию о файле",
+        "tags": [
+            "files"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#token"
+            },
+        {
+                "$ref": "../params.json#fileId"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Запрос успешно обработан. Сервер вернул информацию о файле.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas.json#fileInfo"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

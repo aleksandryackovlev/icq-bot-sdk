@@ -1,0 +1,30 @@
+{
+    "get": {
+        "summary": "Редактировать текстовое сообщение",
+        "tags": [
+            "messages"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#token"
+            },
+            {
+                "$ref": "../params.json#chatId"
+            },
+            {
+                "$ref": "../params.json#msgId"
+            },
+            {
+                "$ref": "../params.json#text"
+            },
+            {
+                "$ref": "../params.json#inlineKeyboardMarkup"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../responses.json#200ok"
+            }
+        }
+    }
+}

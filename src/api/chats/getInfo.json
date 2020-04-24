@@ -1,0 +1,28 @@
+{
+    "get": {
+        "summary": "Получить информацию о чате",
+        "tags": [
+            "chats"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#token"
+            },
+            {
+                "$ref": "../params.json#chatId"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Запрос успешно обработан. Сервер вернул информацию о чате.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas.json#chat"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

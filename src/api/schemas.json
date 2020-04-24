@@ -1,0 +1,1051 @@
+{
+    "admins": {
+        "type": "object",
+        "properties": {
+            "admins": {
+                "type": "array",
+                "items": {
+                    "oneOf": [
+                        {
+                            "$ref": "#userCreator"
+                        },
+                        {
+                            "$ref": "#user"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "bot": {
+        "type": "object",
+        "properties": {
+            "userId": {
+                "type": "string",
+                "description": "Уникальный идентификатор",
+                "example": "747432131"
+            },
+            "nick": {
+                "type": "string",
+                "description": "Уникальный ник",
+                "example": "test_api_bot"
+            },
+            "firstName": {
+                "type": "string",
+                "description": "Имя",
+                "example": "TestBot"
+            },
+            "about": {
+                "type": "string",
+                "description": "Описание бота",
+                "example": "The description of the bot"
+            },
+            "photo": {
+                "type": "array",
+                "items": {
+                    "$ref": "#url"
+                }
+            },
+            "ok": {
+                "type": "boolean",
+                "description": "Статус запроса"
+            }
+        },
+        "required": [
+            "userId",
+            "nick"
+        ]
+    },
+    "chat": {
+        "oneOf": [
+            {
+                "$ref": "#chatPrivate"
+            },
+            {
+                "$ref": "#chatGroup"
+            },
+            {
+                "$ref": "#chatChannel"
+            }
+        ]
+    },
+    "chatPrivate": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "required": true,
+                "type": "string",
+                "enum": [
+                    "private"
+                ]
+            },
+            "firstName": {
+                "type": "string",
+                "example": "Name"
+            },
+            "lastName": {
+                "type": "string",
+                "example": "Surname"
+            },
+            "nick": {
+                "type": "string",
+                "example": "nickname"
+            },
+            "about": {
+                "type": "string",
+                "example": "Information about user"
+            },
+            "isBot": {
+                "type": "boolean",
+                "example": true
+            }
+        }
+    },
+    "chatGroup": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "required": true,
+                "type": "string",
+                "enum": [
+                    "group"
+                ]
+            },
+            "title": {
+                "type": "string",
+                "example": "TestGroup"
+            },
+            "about": {
+                "type": "string",
+                "example": "Group description"
+            },
+            "rules": {
+                "type": "string",
+                "example": "Group rules"
+            },
+            "inviteLink": {
+                "type": "string",
+                "example": "https://example.com/chat/AoLFkoRCn4MpaP0DjUI"
+            },
+            "public": {
+                "required": true,
+                "type": "boolean",
+                "example": true
+            },
+            "joinModeration": {
+                "type": "boolean",
+                "example": true
+            }
+        }
+    },
+    "chatChannel": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "required": true,
+                "type": "string",
+                "enum": [
+                    "channel"
+                ]
+            },
+            "title": {
+                "type": "string",
+                "example": "TestChannel"
+            },
+            "about": {
+                "type": "string",
+                "example": "Channel description"
+            },
+            "rules": {
+                "type": "string",
+                "example": "Channel rules"
+            },
+            "inviteLink": {
+                "type": "string",
+                "example": "https://example.com/chat/AoLFkoRCn4MpaP0DjUI"
+            },
+            "public": {
+                "required": true,
+                "type": "boolean",
+                "example": true
+            },
+            "joinModeration": {
+                "type": "boolean",
+                "example": true
+            }
+        }
+    },
+    "events": {
+        "type": "object",
+        "properties": {
+            "events": {
+                "type": "array",
+                "items": {
+                    "oneOf": [
+                        {
+                            "$ref": "#eventNewMessage"
+                        },
+                        {
+                            "$ref": "#eventEditedMessage"
+                        },
+                        {
+                            "$ref": "#eventDeletedMessage"
+                        },
+                        {
+                            "$ref": "#eventPinnedMessage"
+                        },
+                        {
+                            "$ref": "#eventUnpinnedMessage"
+                        },
+                        {
+                            "$ref": "#eventNewChatMembers"
+                        },
+                        {
+                            "$ref": "#eventLeftChatMembers"
+                        },
+                        {
+                            "$ref": "#eventCallbackQuery"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "eventDeletedMessage": {
+        "type": "object",
+        "properties": {
+            "eventId": {
+                "type": "integer",
+                "example": 3
+            },
+            "type": {
+                "type": "string",
+                "example": "deletedMessage"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "msgId": {
+                        "type": "string",
+                        "example": "57883346846815032"
+                    },
+                    "chat": {
+                        "type": "object",
+                        "properties": {
+                            "chatId": {
+                                "type": "string",
+                                "example": "681869378@chat.agent"
+                            },
+                            "type": {
+                                "type": "string",
+                                "example": "channel"
+                            },
+                            "title": {
+                                "type": "string",
+                                "example": "The best channel"
+                            }
+                        }
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "example": 1546290000
+                    }
+                }
+            }
+        }
+    },
+    "eventEditedMessage": {
+        "type": "object",
+        "properties": {
+            "eventId": {
+                "type": "integer",
+                "example": 2
+            },
+            "type": {
+                "type": "string",
+                "example": "editedMessage"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "msgId": {
+                        "type": "string",
+                        "example": "57883346846815032"
+                    },
+                    "chat": {
+                        "type": "object",
+                        "properties": {
+                            "chatId": {
+                                "type": "string",
+                                "example": "681869378@chat.agent"
+                            },
+                            "type": {
+                                "type": "string",
+                                "example": "channel"
+                            },
+                            "title": {
+                                "type": "string",
+                                "example": "The best channel"
+                            }
+                        }
+                    },
+                    "from": {
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "example": "1234567890"
+                            },
+                            "firstName": {
+                                "type": "string",
+                                "example": "Name"
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "example": "SurName"
+                            }
+                        }
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "example": 1546290000
+                    },
+                    "text": {
+                        "type": "string",
+                        "example": "Hello!"
+                    },
+                    "editedTimestamp": {
+                        "type": "integer",
+                        "example": 1546290099
+                    }
+                }
+            }
+        }
+    },
+    "eventLeftChatMembers": {
+        "type": "object",
+        "properties": {
+            "eventId": {
+                "type": "integer",
+                "example": 7
+            },
+            "type": {
+                "type": "string",
+                "example": "leftChatMembers"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "chat": {
+                        "type": "object",
+                        "properties": {
+                            "chatId": {
+                                "type": "string",
+                                "example": "681869378@chat.agent"
+                            },
+                            "type": {
+                                "type": "string",
+                                "example": "group"
+                            },
+                            "title": {
+                                "type": "string",
+                                "example": "The best group"
+                            }
+                        }
+                    },
+                    "leftMembers": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "userId": {
+                                    "type": "string",
+                                    "example": "1234567890"
+                                },
+                                "firstName": {
+                                    "type": "string",
+                                    "example": "Name"
+                                },
+                                "lastName": {
+                                    "type": "string",
+                                    "example": "SurName"
+                                }
+                            }
+                        }
+                    },
+                    "removedBy": {
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "example": "9876543210"
+                            },
+                            "firstName": {
+                                "type": "string",
+                                "example": "Name"
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "example": "SurName"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "eventNewChatMembers": {
+        "type": "object",
+        "properties": {
+            "eventId": {
+                "type": "integer",
+                "example": 6
+            },
+            "type": {
+                "type": "string",
+                "example": "newChatMembers"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "chat": {
+                        "type": "object",
+                        "properties": {
+                            "chatId": {
+                                "type": "string",
+                                "example": "681869378@chat.agent"
+                            },
+                            "type": {
+                                "type": "string",
+                                "example": "group"
+                            },
+                            "title": {
+                                "type": "string",
+                                "example": "The best group"
+                            }
+                        }
+                    },
+                    "newMembers": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "userId": {
+                                    "type": "string",
+                                    "example": "1234567890"
+                                },
+                                "firstName": {
+                                    "type": "string",
+                                    "example": "Name"
+                                },
+                                "lastName": {
+                                    "type": "string",
+                                    "example": "SurName"
+                                }
+                            }
+                        }
+                    },
+                    "addedBy": {
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "example": "9876543210"
+                            },
+                            "firstName": {
+                                "type": "string",
+                                "example": "Name"
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "example": "SurName"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "eventNewMessage": {
+        "type": "object",
+        "properties": {
+            "eventId": {
+                "type": "integer",
+                "example": 1
+            },
+            "type": {
+                "type": "string",
+                "example": "newMessage"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "msgId": {
+                        "type": "string",
+                        "example": "57883346846815032"
+                    },
+                    "chat": {
+                        "type": "object",
+                        "properties": {
+                            "chatId": {
+                                "type": "string",
+                                "example": "681869378@chat.agent"
+                            },
+                            "type": {
+                                "type": "string",
+                                "example": "channel"
+                            },
+                            "title": {
+                                "type": "string",
+                                "example": "The best channel"
+                            }
+                        }
+                    },
+                    "from": {
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "example": "1234567890"
+                            },
+                            "firstName": {
+                                "type": "string",
+                                "example": "Name"
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "example": "SurName"
+                            }
+                        }
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "example": 1546290000
+                    },
+                    "text": {
+                        "type": "string",
+                        "example": "Hello!"
+                    },
+                    "parts": {
+                        "type": "array",
+                        "items": {
+                            "oneOf": [
+                                {
+                                    "$ref": "#eventNewMessageSticker"
+                                },
+                                {
+                                    "$ref": "#eventNewMessageMention"
+                                },
+                                {
+                                    "$ref": "#eventNewMessageVoice"
+                                },
+                                {
+                                    "$ref": "#eventNewMessageFile"
+                                },
+                                {
+                                    "$ref": "#eventNewMessageForward"
+                                },
+                                {
+                                    "$ref": "#eventNewMessageReply"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "eventNewMessageSticker": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string",
+                "example": "sticker"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "fileId": {
+                        "type": "string",
+                        "example": "2IWuJzaNWCJZxJWCvZhDYuJ5XDsr7hU"
+                    }
+                }
+            }
+        }
+    },
+    "eventNewMessageMention": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string",
+                "example": "mention"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "string",
+                        "example": "1234567890"
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "example": "Name"
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "example": "SurName"
+                    }
+                }
+            }
+        }
+    },
+    "eventNewMessageVoice": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string",
+                "example": "voice"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "fileId": {
+                        "type": "string",
+                        "example": "IdjUEXuGdNhLKUfD5rvkE03IOax54cD"
+                    }
+                }
+            }
+        }
+    },
+    "eventNewMessageFile": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string",
+                "example": "file"
+            },
+            "payload": {
+                "type": "object",
+                "required": [
+                    "fileId"
+                ],
+                "properties": {
+                    "fileId": {
+                        "type": "string",
+                        "example": "ZhSnMuaOmF7FRez2jGWuQs5zGZwlLa0"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "image",
+                            "audio",
+                            "video"
+                        ],
+                        "example": "image"
+                    },
+                    "caption": {
+                        "type": "string",
+                        "example": "Last weekend trip"
+                    }
+                }
+            }
+        }
+    },
+    "eventNewMessageForward": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string",
+                "example": "forward"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "object",
+                        "properties": {
+                            "from": {
+                                "type": "object",
+                                "properties": {
+                                    "firstName": {
+                                        "type": "string",
+                                        "example": "Name"
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "example": "SurName"
+                                    },
+                                    "userId": {
+                                        "type": "string",
+                                        "example": "1234567890"
+                                    }
+                                }
+                            },
+                            "msgId": {
+                                "type": "string",
+                                "example": "6724238139063271643"
+                            },
+                            "text": {
+                                "type": "string",
+                                "example": "some text"
+                            },
+                            "timestamp": {
+                                "type": "integer",
+                                "example": 1565608694
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "eventNewMessageReply": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string",
+                "example": "reply"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "object",
+                        "properties": {
+                            "from": {
+                                "type": "object",
+                                "properties": {
+                                    "firstName": {
+                                        "type": "string",
+                                        "example": "Name"
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "example": "SurName"
+                                    },
+                                    "userId": {
+                                        "type": "string",
+                                        "example": "1234567890"
+                                    }
+                                }
+                            },
+                            "msgId": {
+                                "type": "string",
+                                "example": "6724238139063271643"
+                            },
+                            "text": {
+                                "type": "string",
+                                "example": "some text"
+                            },
+                            "timestamp": {
+                                "type": "integer",
+                                "example": 1565608694
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "eventPinnedMessage": {
+        "type": "object",
+        "properties": {
+            "eventId": {
+                "type": "integer",
+                "example": 4
+            },
+            "type": {
+                "type": "string",
+                "example": "pinnedMessage"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "chat": {
+                        "type": "object",
+                        "properties": {
+                            "chatId": {
+                                "type": "string",
+                                "example": "681869378@chat.agent"
+                            },
+                            "type": {
+                                "type": "string",
+                                "example": "group"
+                            },
+                            "title": {
+                                "type": "string",
+                                "example": "The best group"
+                            }
+                        }
+                    },
+                    "from": {
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "example": "9876543210"
+                            },
+                            "firstName": {
+                                "type": "string",
+                                "example": "Name"
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "example": "SurName"
+                            }
+                        }
+                    },
+                    "msgId": {
+                        "type": "string",
+                        "example": "6720509406122810315"
+                    },
+                    "text": {
+                        "type": "string",
+                        "example": "Some important information!"
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "example": 1564740530
+                    }
+                }
+            }
+        }
+    },
+    "eventUnpinnedMessage": {
+        "type": "object",
+        "properties": {
+            "eventId": {
+                "type": "integer",
+                "example": 5
+            },
+            "type": {
+                "type": "string",
+                "example": "unpinnedMessage"
+            },
+            "payload": {
+                "properties": {
+                    "chat": {
+                        "type": "object",
+                        "properties": {
+                            "chatId": {
+                                "type": "string",
+                                "example": "681869378@chat.agent"
+                            },
+                            "type": {
+                                "type": "string",
+                                "example": "group"
+                            },
+                            "title": {
+                                "type": "string",
+                                "example": "The best group"
+                            }
+                        }
+                    },
+                    "msgId": {
+                        "type": "string",
+                        "example": "6720509406122810315"
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "example": 1564740530
+                    }
+                }
+            }
+        }
+    },
+    "eventCallbackQuery": {
+        "type": "object",
+        "description": "Событие по нажатию кнопки пользователем. Бот обязан ответить на данное событие вызовом метода `answerCallbackQuery` передав `queryId`. До момента вызова метода – клиентские приложения будут отображать индикатор обработки запроса нажатия на кнопку.",
+        "properties": {
+            "eventId": {
+                "type": "integer",
+                "example": 8
+            },
+            "type": {
+                "type": "string",
+                "example": "callbackQuery"
+            },
+            "payload": {
+                "type": "object",
+                "properties": {
+                    "queryId": {
+                        "type": "string",
+                        "example": "QDFWEscvSW"
+                    },
+                    "chat": {
+                        "type": "object",
+                        "properties": {
+                            "chatId": {
+                                "type": "string",
+                                "example": "681869378@chat.agent"
+                            },
+                            "type": {
+                                "type": "string",
+                                "example": "group"
+                            },
+                            "title": {
+                                "type": "string",
+                                "example": "The best group"
+                            }
+                        }
+                    },
+                    "from": {
+                        "type": "object",
+                        "properties": {
+                            "userId": {
+                                "type": "string",
+                                "example": "1234567890"
+                            },
+                            "firstName": {
+                                "type": "string",
+                                "example": "Name"
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "example": "SurName"
+                            }
+                        }
+                    },
+                    "message": {
+                        "$ref": "#eventNewMessage"
+                    },
+                    "callbackData": {
+                        "type": "string",
+                        "example": "RXhhbXBsZSBjYWxsYmFjayBkYXRhCg=="
+                    }
+                }
+            }
+        }
+    },
+    "fileInfo": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string",
+                "example": "video"
+            },
+            "size": {
+                "type": "integer",
+                "example": 20971520
+            },
+            "filename": {
+                "type": "string",
+                "example": "VIDEO.mkv"
+            },
+            "url": {
+                "type": "string",
+                "example": "https://example.com/get/88MfCLBHphvOAOeuzYhZfW5b7bcfa31ab"
+            }
+        }
+    },
+    "members": {
+        "type": "object",
+        "properties": {
+            "members": {
+                "type": "array",
+                "items": {
+                    "oneOf": [
+                        {
+                            "$ref": "#userCreator"
+                        },
+                        {
+                            "$ref": "#userAdmin"
+                        },
+                        {
+                            "$ref": "#user"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "msg": {
+        "type": "object",
+        "properties": {
+            "msgId": {
+                "type": "string",
+                "example": "57883346846815032"
+            },
+            "ok": {
+                "type": "boolean",
+                "description": "Статус запроса"
+            }
+        }
+    },
+    "msgLoadFile": {
+        "type": "object",
+        "properties": {
+            "fileId": {
+                "type": "string",
+                "example": "0dC76vcKS3XZOtG5DVs9y15d1daefa1ae"
+            },
+            "msgId": {
+                "type": "string",
+                "example": "57883346846815032"
+            },
+            "ok": {
+                "type": "boolean",
+                "description": "Статус запроса"
+            }
+        }
+    },
+    "ok": {
+        "type": "object",
+        "properties": {
+            "ok": {
+                "type": "boolean",
+                "description": "Статус запроса"
+            }
+        }
+    },
+    "url": {
+        "type": "object",
+        "properties": {
+            "url": {
+                "type": "string",
+                "example": "https://example.com/expressions/getAsset?f=native&type=largeBuddyIcon&id=0110379ad781bcc4a969242f1f5a93144362"
+            }
+        }
+    },
+    "user": {
+        "type": "object",
+        "properties": {
+            "userId": {
+                "type": "string"
+            }
+        }
+    },
+    "users": {
+        "type": "object",
+        "properties": {
+            "users": {
+                "type": "array",
+                "items": {
+                    "$ref": "#user"
+                }
+            }
+        }
+    },
+    "userAdmin": {
+        "type": "object",
+        "properties": {
+            "userId": {
+                "type": "string"
+            },
+            "admin": {
+                "type": "boolean"
+            }
+        }
+    },
+    "userCreator": {
+        "type": "object",
+        "properties": {
+            "userId": {
+                "type": "string"
+            },
+            "creator": {
+                "type": "boolean"
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "get": {
+        "summary": "Заблокировать пользователя в чате",
+        "description": "Если пользозатель был участником чата, он будет удален из него и заблокирован. Также можно удалить последние его сообщения при помощи параметра `delLastMessages`.<br><br>Для вызова этого метода бот должен быть администратором в чате.",
+        "tags": [
+            "chats"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#token"
+            },
+            {
+                "$ref": "../params.json#groupOrChannelId"
+            },
+            {
+                "$ref": "../params.json#userId"
+            },
+            {
+                "$ref": "../params.json#delLastMessages"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../responses.json#200ok"
+            }
+        }
+    }
+}

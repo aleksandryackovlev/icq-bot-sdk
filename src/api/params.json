@@ -1,0 +1,308 @@
+{
+    "actions": {
+        "name": "actions",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "looking",
+                    "typing"
+                ]
+            }
+        },
+        "description": "Текущие действия в чате. Отправьте пустое значение, если все действия завершены."
+    },
+    "caption": {
+        "name": "caption",
+        "in": "query",
+        "schema": {
+            "type": "string"
+        },
+        "description": "Подпись к файлу."
+    },
+    "chatId": {
+        "name": "chatId",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "string"
+        },
+        "description": "Уникальный ник или id чата или пользователя. Id можно получить из входящих [events](#operations-tag-events) (поле `chatId`).",
+        "example": "@user_id_example, @public_chat_id_example или 681869378@chat.agent"
+    },
+    "cursor": {
+        "name": "cursor",
+        "in": "query",
+        "schema": {
+            "type": "string"
+        },
+        "description": "Идентификатор для получения продолжения списка пользователей. Cursor можно получить из результатов первого/предыдущего запроса `getMembers`. Поле `cursor`."
+    },
+    "delLastMessages": {
+        "name": "delLastMessages",
+        "in": "query",
+        "schema": {
+            "type": "boolean"
+        },
+        "description": "Удаление последних сообщений заданного пользователя в чате.",
+        "example": "true"
+    },
+    "fileId": {
+        "name": "fileId",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "string"
+        },
+        "description": "Id ранее загруженного файла."
+    },
+    "forwardChatId": {
+        "name": "forwardChatId",
+        "in": "query",
+        "schema": {
+            "type": "string"
+        },
+        "description": "Id чата, из которого будет переслано сообщение. Передается только с forwardMsgId. Не может быть передано с параметром `replyMsgId`."
+    },
+    "forwardMsgId": {
+        "name": "forwardMsgId",
+        "in": "query",
+        "schema": {
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+        "description": "Id пересылаемого сообщения. Передается только с forwardChatId. Не может быть передано с параметром `replyMsgId`."
+    },
+    "groupOrChannelAbout": {
+        "name": "about",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "string"
+        },
+        "description": "Описание чата.",
+        "example": "Чат для обсуждения рабочих моментов."
+    },
+    "groupOrChannelId": {
+        "name": "chatId",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "string"
+        },
+        "description": "Уникальный ник или id группы или канала. Id можно получить из входящих [events](#operations-tag-events) (поле `chatId`).",
+        "example": "@public_chat_id_example или 681869378@chat.agent"
+    },
+    "groupOrChannelRules": {
+        "name": "rules",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "string"
+        },
+        "description": "Правила чата.",
+        "example": "Запрещены обсуждения не по теме"
+    },
+    "groupOrChannelTitle": {
+        "name": "title",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "string"
+        },
+        "description": "Название чата.",
+        "example": "Чат команды"
+    },
+    "lastEventId": {
+        "name": "lastEventId",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "integer"
+        },
+        "description": "Id последнего известного события."
+    },
+    "msgId": {
+        "name": "msgId",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "integer"
+        },
+        "description": "Id сообщения."
+    },
+    "msgIds": {
+        "name": "msgId",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+        "description": "Id сообщений."
+    },
+    "pendingApprove": {
+        "name": "approve",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "boolean"
+        },
+        "description": "Положительное или отрицательное решение.",
+        "example": "true"
+    },
+    "pendingEveryone": {
+        "name": "everyone",
+        "in": "query",
+        "schema": {
+            "type": "boolean"
+        },
+        "description": "Решение обо всех пользователях, ожидающих вступления в чат. Не может быть передано с параметром `userId`.",
+        "example": "true"
+    },
+    "pendingUserId": {
+        "name": "userId",
+        "in": "query",
+        "schema": {
+            "type": "string"
+        },
+        "description": "Ник или id пользователя, ожидающего вступления в чат. Не может быть передано с параметром `everyone`.",
+        "example": "true"
+    },
+    "pollTime": {
+        "name": "pollTime",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "integer"
+        },
+        "description": "Время удержания соединения (в секундах)."
+    },
+    "replyMsgId": {
+        "name": "replyMsgId",
+        "in": "query",
+        "schema": {
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+        "description": "Id цитируемого сообщения. Не может быть передано одновременно с параметрами `forwardChatId` и `forwardMsgId`."
+    },
+    "text": {
+        "name": "text",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "string"
+        },
+        "description": "Текст сообщения. Можно упомянуть пользователя, добавив в текст его userId в следующем формате @[userId].",
+        "example": "Привет, @[0123456789]"
+    },
+    "textAnswer": {
+        "name": "text",
+        "in": "query",
+        "schema": {
+            "type": "string"
+        },
+        "description": "Текст нотификации, который будет отображен пользователю. В случае, если текст не задан – ничего не будет отображено."
+    },
+    "token": {
+        "name": "token",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "string"
+        },
+        "description": "Секретный токен.",
+        "example": "001.2659914704.0218887601:747432131"
+    },
+    "userId": {
+        "name": "userId",
+        "in": "query",
+        "required": true,
+        "schema": {
+            "type": "string"
+        },
+        "description": "Уникальный ник или id пользователя."
+    },
+    "queryId": {
+        "name": "queryId",
+        "in": "query",
+        "schema": {
+            "type": "string"
+        },
+        "required": true,
+        "description": "Идентификатор callback query полученного ботом"
+    },
+    "showAlert": {
+        "name": "showAlert",
+        "in": "query",
+        "description": "Если выставить значение в `true`, вместо нотификации будет показан `alert`",
+        "schema": {
+            "type": "boolean"
+        }
+    },
+    "url": {
+        "name": "url",
+        "in": "query",
+        "schema": {
+            "type": "string"
+        },
+        "description": "URL, который будет открыт клиентским приложением"
+    },
+    "inlineKeyboardMarkup": {
+        "name": "inlineKeyboardMarkup",
+        "in": "body",
+        "description": "Это массив массивов с описанием кнопок. Верхний уровень это массив строк кнопок, ниже уровнем массив кнопок в конкретной строке",
+        "schema": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "text": {
+                                    "type": "string",
+                                    "description": "Текст, который будет отображен на кнопке. Допустимо использовать \\n для того, чтобы текст был на несколько строк",
+                                    "example": "🌎 Visit website"
+                                },
+                                "url": {
+                                    "type": "string",
+                                    "description": "URL который необходимо открыть по нажатию на кнопку",
+                                    "example": "http://mail.ru"
+                                }
+                            },
+                            "required" : [ "text", "url" ]
+                        },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "text": {
+                                    "type": "string",
+                                    "description": "Текст, который будет отображен на кнопке. Допустимо использовать \\n для того, чтобы текст был на несколько строк",
+                                    "example": "🤖 Make a query"
+                                },
+                                "callbackData": {
+                                    "type": "string",
+                                    "description": "Данные, которые будут отправлены боту в момент нажатия на кнопку",
+                                    "example": "RXhhbXBsZSBjYWxsYmFjayBkYXRhCg=="
+                                }
+                            },
+                            "required" : [ "text", "callbackData" ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

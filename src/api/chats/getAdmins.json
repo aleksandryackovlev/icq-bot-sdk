@@ -1,0 +1,28 @@
+{
+    "get": {
+        "summary": "Получить список администраторов чата",
+        "tags": [
+            "chats"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#token"
+            },
+            {
+                "$ref": "../params.json#groupOrChannelId"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Запрос успешно обработан. Сервер вернул список админов в чате.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas.json#admins"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

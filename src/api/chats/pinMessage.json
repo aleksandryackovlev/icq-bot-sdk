@@ -1,0 +1,25 @@
+{
+    "get": {
+        "summary": "Закрепить сообщение в чате",
+        "description": "Для вызова этого метода бот должен быть администратором в чате.",
+        "tags": [
+            "chats"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#token"
+            },
+            {
+                "$ref": "../params.json#groupOrChannelId"
+            },
+            {
+                "$ref": "../params.json#msgId"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../responses.json#200ok"
+            }
+        }
+    }
+}

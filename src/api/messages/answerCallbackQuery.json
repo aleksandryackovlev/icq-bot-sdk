@@ -1,0 +1,28 @@
+{
+    "get": {
+        "summary": "Ответ на запрос обработки нажатия кнопки",
+        "description": "Вызов данного метода должен использоваться в ответ на получение события [callbackQuery]",
+        "tags": [
+            "messages"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#queryId"
+            },
+            {
+                "$ref": "../params.json#textAnswer"
+            },
+            {
+                "$ref": "../params.json#showAlert"
+            },
+            {
+                "$ref": "../params.json#url"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../responses.json#200ok"
+            }
+        }
+    }
+}

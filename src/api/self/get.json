@@ -1,0 +1,28 @@
+{
+    "get": {
+        "summary": "Получить информацию о боте",
+        "description": "Метод можно использовать для проверки валидности токена.",
+        "operationId": "getInfo",
+        "tags": [
+            "self"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#/token"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Запрос успешно обработан. Сервер вернул информацию о боте.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas.json#/bot"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

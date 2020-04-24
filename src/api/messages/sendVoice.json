@@ -1,0 +1,85 @@
+{
+    "get": {
+        "summary": "Отправить ранее загруженное голосовое сообщение",
+        "description": "Если вы хотите, чтобы клиент отображал этот файл как воспроизводимое голосовое сообщение, он должен быть в формате [aac](https://ru.wikipedia.org/wiki/Advanced_Audio_Coding), [ogg](https://ru.wikipedia.org/wiki/Ogg) или [m4a](https://ru.wikipedia.org/wiki/MPEG-4_Part_14).",
+        "tags": [
+            "messages"
+        ],
+        "parameters": [
+            {
+                "$ref": "../params.json#token"
+            },
+            {
+                "$ref": "../params.json#chatId"
+            },
+            {
+                "$ref": "../params.json#fileId"
+            },
+            {
+                "$ref": "../params.json#replyMsgId"
+            },
+            {
+                "$ref": "../params.json#forwardChatId"
+            },
+            {
+                "$ref": "../params.json#forwardMsgId"
+            },
+            {
+                "$ref": "../params.json#inlineKeyboardMarkup"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../responses.json#200msgOk"
+            }
+        }
+    },
+    "post": {
+        "summary": "Загрузить и отправить новое голосовое сообщение",
+        "description": "Если вы хотите, чтобы клиент отображал этот файл как воспроизводимое голосовое сообщение, он должен быть в формате [aac](https://ru.wikipedia.org/wiki/Advanced_Audio_Coding), [ogg](https://ru.wikipedia.org/wiki/Ogg) или [m4a](https://ru.wikipedia.org/wiki/MPEG-4_Part_14).",
+        "tags": [
+            "messages"
+        ],
+        "requestBody": {
+            "required": true,
+            "content": {
+                "multipart/form-data": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "file": {
+                                "type": "string",
+                                "format": "binary"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": [
+            {
+                "$ref": "../params.json#token"
+            },
+            {
+                "$ref": "../params.json#chatId"
+            },
+            {
+                "$ref": "../params.json#replyMsgId"
+            },
+            {
+                "$ref": "../params.json#forwardChatId"
+            },
+            {
+                "$ref": "../params.json#forwardMsgId"
+            },
+            {
+                "$ref": "../params.json#inlineKeyboardMarkup"
+            }
+        ],
+        "responses": {
+            "200": {
+                "$ref": "../responses.json#200msgLoadFileOk"
+            }
+        }
+    }
+}
