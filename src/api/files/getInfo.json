@@ -1,28 +1,29 @@
 {
-    "get": {
-        "summary": "Получить информацию о файле",
-        "tags": [
-            "files"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-        {
-                "$ref": "../params.json#fileId"
+  "get": {
+    "operationId": "files_getInfo",
+    "summary": "Get info about a file",
+    "tags": [
+      "files"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+    {
+        "$ref": "../params.json#/fileId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success. The server has returned the info about the file.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../schemas.json#/fileInfo"
             }
-        ],
-        "responses": {
-            "200": {
-                "description": "Запрос успешно обработан. Сервер вернул информацию о файле.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "../schemas.json#fileInfo"
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }
