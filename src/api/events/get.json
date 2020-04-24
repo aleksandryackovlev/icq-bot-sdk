@@ -1,32 +1,33 @@
 {
-    "get": {
-        "summary": "Получить события",
-        "description": "Каждое событие имеет идентификатор `eventId`. При вызове метода нужно передать максимальный из известных идентификаторов событий в параметре `lastEventId`. При первом вызове данного метода в качестве значения этого параметра следует передать 0. При отсутствии событий на сервере в момент выполнения запроса, соединение остается открытым. Как только появится событие сервер его вернёт, завершив открытый запрос. Если в течении `pollTime` секунд события не появились, возвращается пустой массив `events`.",
-        "tags": [
-            "events"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#lastEventId"
-            },
-            {
-                "$ref": "../params.json#pollTime"
+  "get": {
+    "operationId": "events_get",
+    "summary": "Get events",
+    "description": "Every event has an identifier `eventId`. When you call the method you have to send the biggest knonw event id in the parameter `lastEventId`. For the first call set this param to 0. If there are no events on the server at the moment of the call, the connection is going to be kept alive. As soon as an event has occured the server will send it back and close the connection. If after `pollTime` seconds of waiting no events have been emitted, the server will return an empty array of `events`.",
+    "tags": [
+      "events"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/lastEventId"
+      },
+      {
+        "$ref": "../params.json#/pollTime"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success. The server has returned all the events.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../schemas.json#/events"
             }
-        ],
-        "responses": {
-            "200": {
-                "description": "Запрос успешно обработан. Сервер вернул входящие события.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "../schemas.json#events"
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }
