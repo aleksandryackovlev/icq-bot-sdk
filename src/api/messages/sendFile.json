@@ -1,89 +1,91 @@
 {
-    "get": {
-        "summary": "Отправить ранее загруженный файл",
-        "tags": [
-            "messages"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#chatId"
-            },
-            {
-                "$ref": "../params.json#fileId"
-            },
-            {
-                "$ref": "../params.json#caption"
-            },
-            {
-                "$ref": "../params.json#replyMsgId"
-            },
-            {
-                "$ref": "../params.json#forwardChatId"
-            },
-            {
-                "$ref": "../params.json#forwardMsgId"
-            },
-            {
-                "$ref": "../params.json#inlineKeyboardMarkup"
-            }
-        ],
-        "responses": {
-            "200": {
-                "$ref": "../responses.json#200msgOk"
-            }
-        }
-    },
-    "post": {
-        "summary": "Загрузить и отправить новый файл",
-        "tags": [
-            "messages"
-        ],
-        "requestBody": {
-            "required": true,
-            "content": {
-                "multipart/form-data": {
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                            "file": {
-                                "type": "string",
-                                "format": "binary"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#chatId"
-            },
-            {
-                "$ref": "../params.json#caption"
-            },
-            {
-                "$ref": "../params.json#replyMsgId"
-            },
-            {
-                "$ref": "../params.json#forwardChatId"
-            },
-            {
-                "$ref": "../params.json#forwardMsgId"
-            },
-            {
-                "$ref": "../params.json#inlineKeyboardMarkup"
-            }
-        ],
-        "responses": {
-            "200": {
-                "$ref": "../responses.json#200msgLoadFileOk"
-            }
-        }
+  "get": {
+    "operationId": "message_sendFile",
+    "summary": "Send a previously loaded file",
+    "tags": [
+      "messages"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/chatId"
+      },
+      {
+        "$ref": "../params.json#/fileId"
+      },
+      {
+        "$ref": "../params.json#/caption"
+      },
+      {
+        "$ref": "../params.json#/replyMsgId"
+      },
+      {
+        "$ref": "../params.json#/forwardChatId"
+      },
+      {
+        "$ref": "../params.json#/forwardMsgId"
+      },
+      {
+        "$ref": "../params.json#/inlineKeyboardMarkup"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../responses.json#/200msgOk"
+      }
     }
+  },
+  "post": {
+    "operationId": "message_uploadAndSendFile",
+    "summary": "Upload and send a new file",
+    "tags": [
+      "messages"
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "multipart/form-data": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/chatId"
+      },
+      {
+        "$ref": "../params.json#/caption"
+      },
+      {
+        "$ref": "../params.json#/replyMsgId"
+      },
+      {
+        "$ref": "../params.json#/forwardChatId"
+      },
+      {
+        "$ref": "../params.json#/forwardMsgId"
+      },
+      {
+        "$ref": "../params.json#/inlineKeyboardMarkup"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../responses.json#/200msgLoadFileOk"
+      }
+    }
+  }
 }

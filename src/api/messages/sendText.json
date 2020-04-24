@@ -1,36 +1,37 @@
 {
-    "get": {
-        "summary": "Отправить текстовое сообщение",
-        "tags": [
-            "messages"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#chatId"
-            },
-            {
-                "$ref": "../params.json#text"
-            },
-            {
-                "$ref": "../params.json#replyMsgId"
-            },
-            {
-                "$ref": "../params.json#forwardChatId"
-            },
-            {
-                "$ref": "../params.json#forwardMsgId"
-            },
-            {
-                "$ref": "../params.json#inlineKeyboardMarkup"
-            }
-        ],
-        "responses": {
-            "200": {
-                "$ref": "../responses.json#200msgOk"
-            }
-        }
+  "get": {
+    "operationId": "message_sentText",
+    "summary": "Send a message",
+    "tags": [
+      "messages"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/chatId"
+      },
+      {
+        "$ref": "../params.json#/text"
+      },
+      {
+        "$ref": "../params.json#/replyMsgId"
+      },
+      {
+        "$ref": "../params.json#/forwardChatId"
+      },
+      {
+        "$ref": "../params.json#/forwardMsgId"
+      },
+      {
+        "$ref": "../params.json#/inlineKeyboardMarkup"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../responses.json#/200msgOk"
+      }
     }
+  }
 }

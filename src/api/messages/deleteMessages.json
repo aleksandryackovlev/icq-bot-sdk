@@ -1,25 +1,26 @@
 {
-    "get": {
-        "summary": "Удалить сообщение",
-        "description": "На удаление наложены следующие ограничения&#58;\n<ul>\n<li>Сообщение может быть удалено только если оно было отправлено менее 48 часов назад;</li>\n<li>Бот может удалить исходящие сообщения в приватных чатах и группах;</li>\n<li>Бот может удалить любое сообщение в группе, если он является администратором.</li>\n<ul>",
-        "tags": [
-            "messages"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#chatId"
-            },
-            {
-                "$ref": "../params.json#msgIds"
-            }
-        ],
-        "responses": {
-            "200": {
-                "$ref": "../responses.json#200ok"
-            }
-        }
+  "get": {
+    "operationId": "message_deleteMessages",
+    "summary": "Delete messages",
+    "description": "There are some limitations when the method could be used. See the official docs for more details",
+    "tags": [
+      "messages"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/chatId"
+      },
+      {
+        "$ref": "../params.json#/msgIds"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../responses.json#/200ok"
+      }
     }
+  }
 }
