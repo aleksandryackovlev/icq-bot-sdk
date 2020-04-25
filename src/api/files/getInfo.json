@@ -17,7 +17,7 @@
       "200": {
         "description": "Success. The server has returned the info about the file.",
         "content": {
-          "application/json": {
+          "application/json;charset=utf-8": {
             "schema": {
               "$ref": "../schemas.json#/fileInfo"
             }

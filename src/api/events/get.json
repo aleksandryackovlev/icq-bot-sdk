@@ -21,7 +21,7 @@
       "200": {
         "description": "Success. The server has returned all the events.",
         "content": {
-          "application/json": {
+          "application/json;charset=utf-8": {
             "schema": {
               "$ref": "../schemas.json#/events"
             }

@@ -18,7 +18,7 @@
       "200": {
         "description": "Success. The server returned the list of all banned users.",
         "content": {
-          "application/json": {
+          "application/json;charset=utf-8": {
             "schema": {
               "$ref": "../schemas.json#/users"
             }
