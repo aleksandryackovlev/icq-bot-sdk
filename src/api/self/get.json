@@ -1,6 +1,6 @@
 {
   "get": {
-    "operationId": "selfGet",
+    "operationId": "self_get",
     "summary": "Get info about the bot",
     "description": "The method can be used to check if token is valid.",
     "operationId": "getInfo",
