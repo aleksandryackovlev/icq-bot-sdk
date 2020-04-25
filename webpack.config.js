@@ -50,6 +50,7 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       fetch: 'node-fetch',
+      FormData: 'form-data',
     }),
   ],
 };
