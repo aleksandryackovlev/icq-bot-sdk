@@ -1,32 +1,32 @@
 {
-    "200msgLoadFileOk": {
-        "description": "Запрос успешно обработан. Сервер вернул id сообщения и id загруженного файлы.",
-        "content": {
-            "application/json": {
-                "schema": {
-                    "$ref": "schemas.json#msgLoadFile"
-                }
-            }
+  "200msgLoadFileOk": {
+    "description": "Success. The server has returned id of the message and the id of the uploaded file.",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "schemas.json#/msgLoadFile"
         }
-    },
-    "200msgOk": {
-        "description": "Запрос успешно обработан. Сервер вернул id сообщения.",
-        "content": {
-            "application/json": {
-                "schema": {
-                    "$ref": "schemas.json#msg"
-                }
-            }
-        }
-    },
-    "200ok": {
-        "description": "Запрос успешно обработан.",
-        "content": {
-            "application/json": {
-                "schema": {
-                    "$ref": "schemas.json#ok"
-                }
-            }
-        }
+      }
     }
+  },
+  "200msgOk": {
+    "description": "Success. The server has returned id of the message.",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "schemas.json#/msg"
+        }
+      }
+    }
+  },
+  "200ok": {
+    "description": "Success",
+    "content": {
+      "application/json": {
+        "schema": {
+          "$ref": "schemas.json#/ok"
+        }
+      }
+    }
+  }
 }
