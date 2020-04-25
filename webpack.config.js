@@ -2,6 +2,7 @@
 
 const path = require('path');
 
+const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
@@ -32,7 +33,7 @@ module.exports = {
               compiler: 'js',
               templateOptions: {
                 validateRequest: true,
-                validateResponse: true,
+                validateResponse: false,
               },
               skipInvalid: true,
               style: {
@@ -46,5 +47,9 @@ module.exports = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new webpack.ProvidePlugin({
+      fetch: 'node-fetch',
+    }),
+  ],
 };
