@@ -12,7 +12,7 @@
   "200msgOk": {
     "description": "Success. The server has returned id of the message.",
     "content": {
-        "application/json;charset=utf-8": {
+      "application/json;charset=utf-8": {
         "schema": {
           "$ref": "schemas.json#/msg"
         }
