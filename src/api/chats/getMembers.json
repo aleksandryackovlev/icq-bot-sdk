@@ -1,31 +1,32 @@
 {
-    "get": {
-        "summary": "Получить список участников чата",
-        "tags": [
-            "chats"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#groupOrChannelId"
-            },
-            {
-                "$ref": "../params.json#cursor"
+  "get": {
+    "operationId": "chats_getMembers",
+    "summary": "Get the list of all members of a chat",
+    "tags": [
+      "chats"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/groupOrChannelId"
+      },
+      {
+        "$ref": "../params.json#/cursor"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success. The server has returned the list of members.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../schemas.json#/members"
             }
-        ],
-        "responses": {
-            "200": {
-                "description": "Запрос успешно обработан. Сервер вернул список участников чата.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "../schemas.json#members"
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }

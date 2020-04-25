@@ -1,28 +1,29 @@
 {
-    "get": {
-        "summary": "Получить список администраторов чата",
-        "tags": [
-            "chats"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#groupOrChannelId"
+  "get": {
+    "operationId": "chats_getAdmins",
+    "summary": "Get the list of admins",
+    "tags": [
+      "chats"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/groupOrChannelId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success. The server has returned the list of admins.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../schemas.json#/admins"
             }
-        ],
-        "responses": {
-            "200": {
-                "description": "Запрос успешно обработан. Сервер вернул список админов в чате.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "../schemas.json#admins"
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }

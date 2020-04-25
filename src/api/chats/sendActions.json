@@ -1,25 +1,26 @@
 {
-    "get": {
-        "summary": "Отправить действия в чат",
-        "description": "Необходимо вызывать этот метод каждый раз при изменении текущих действий, или каждые 10 секунд, если действия не изменились. После отправки запроса без активных действий повторно уведомлять об их отсутствии не следует.",
-        "tags": [
-            "chats"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#chatId"
-            },
-            {
-                "$ref": "../params.json#actions"
-            }
-        ],
-        "responses": {
-            "200": {
-                "$ref": "../responses.json#200ok"
-            }
-        }
+  "get": {
+    "operationId": "chats_sendActions",
+    "summary": "Send an action to a chat",
+    "description": "The method have to be called on every change of the action or every 10 seconds if the action hasn't been changed. After the request with action has been sent there is no point in sending message about the empty action.",
+    "tags": [
+      "chats"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/chatId"
+      },
+      {
+        "$ref": "../params.json#/actions"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../responses.json#/200ok"
+      }
     }
+  }
 }

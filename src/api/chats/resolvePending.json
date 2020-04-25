@@ -1,31 +1,32 @@
 {
-    "get": {
-        "summary": "Принять решение о пользователях, ожидающих вступления в чат",
-        "description": "Должен быть указан один из двух параметров: `userId` или `everyone`. Эти параметры не могут быть указаны одновременно.<br><br>Для вызова этого метода бот должен быть администратором в чате.",
-        "tags": [
-            "chats"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#groupOrChannelId"
-            },
-            {
-                "$ref": "../params.json#pendingApprove"
-            },
-            {
-                "$ref": "../params.json#pendingUserId"
-            },
-            {
-                "$ref": "../params.json#pendingEveryone"
-            }
-        ],
-        "responses": {
-            "200": {
-                "$ref": "../responses.json#200ok"
-            }
-        }
+  "get": {
+    "operationId": "chats_resolvePending",
+    "summary": "Decide whether to accept or not pending users.",
+    "description": "One of the params `userId` or `everyone` has to be sent. You can't send both these params.<br><br>The bot has to be an adming of the chat in order to be able to perform this action.",
+    "tags": [
+      "chats"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/groupOrChannelId"
+      },
+      {
+        "$ref": "../params.json#/pendingApprove"
+      },
+      {
+        "$ref": "../params.json#/pendingUserId"
+      },
+      {
+        "$ref": "../params.json#/pendingEveryone"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../responses.json#/200ok"
+      }
     }
+  }
 }

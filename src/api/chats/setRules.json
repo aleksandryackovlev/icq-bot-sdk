@@ -1,25 +1,26 @@
 {
-    "get": {
-        "summary": "Изменить правила чата",
-        "description": "Для вызова этого метода бот должен быть администратором в чате.",
-        "tags": [
-            "chats"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#groupOrChannelId"
-            },
-            {
-                "$ref": "../params.json#groupOrChannelRules"
-            }
-        ],
-        "responses": {
-            "200": {
-                "$ref": "../responses.json#200ok"
-            }
-        }
+  "get": {
+    "operationId": "chats_setRules",
+    "summary": "Change the rules for the chat",
+    "description": "The bot has to be an adming of the chat in order to be able to perform this action",
+    "tags": [
+      "chats"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/groupOrChannelId"
+      },
+      {
+        "$ref": "../params.json#/groupOrChannelRules"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../responses.json#/200ok"
+      }
     }
+  }
 }

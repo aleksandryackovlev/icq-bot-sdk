@@ -1,28 +1,29 @@
 {
-    "get": {
-        "summary": "Заблокировать пользователя в чате",
-        "description": "Если пользозатель был участником чата, он будет удален из него и заблокирован. Также можно удалить последние его сообщения при помощи параметра `delLastMessages`.<br><br>Для вызова этого метода бот должен быть администратором в чате.",
-        "tags": [
-            "chats"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#groupOrChannelId"
-            },
-            {
-                "$ref": "../params.json#userId"
-            },
-            {
-                "$ref": "../params.json#delLastMessages"
-            }
-        ],
-        "responses": {
-            "200": {
-                "$ref": "../responses.json#200ok"
-            }
-        }
+  "get": {
+    "operationId": "chats_blockUser",
+    "summary": "Ban a user in a chat",
+    "description": "If the user was a member of the chat, he is going to be removed from the chat and banned. It is also possible to delete the user's last messages `delLastMessages`.<br><br>The bot has to be an admin of the chat in order to be able to perform these actions.",
+    "tags": [
+      "chats"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/groupOrChannelId"
+      },
+      {
+        "$ref": "../params.json#/userId"
+      },
+      {
+        "$ref": "../params.json#/delLastMessages"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../responses.json#/200ok"
+      }
     }
+  }
 }

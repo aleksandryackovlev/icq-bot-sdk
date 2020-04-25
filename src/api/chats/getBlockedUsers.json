@@ -1,29 +1,30 @@
 {
-    "get": {
-        "summary": "Получить список пользователей, которые заблокированы в чате",
-        "description": "Для вызова этого метода бот должен быть администратором в чате.",
-        "tags": [
-            "chats"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#groupOrChannelId"
+  "get": {
+    "operationId": "chats_getBlockedUsers",
+    "summary": "Get the list of all users that have been banned in the chat",
+    "description": "The bot has to be an admin of the chat in order to be able to perform this action.",
+    "tags": [
+      "chats"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/groupOrChannelId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success. The server returned the list of all banned users.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../schemas.json#/users"
             }
-        ],
-        "responses": {
-            "200": {
-                "description": "Запрос успешно обработан. Сервер вернул список пользователей, которые заблокированы в чате.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "../schemas.json#users"
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }

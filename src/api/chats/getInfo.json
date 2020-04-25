@@ -1,28 +1,29 @@
 {
-    "get": {
-        "summary": "Получить информацию о чате",
-        "tags": [
-            "chats"
-        ],
-        "parameters": [
-            {
-                "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#chatId"
+  "get": {
+    "operationId": "chats_getInfo",
+    "summary": "Get the info about a chat",
+    "tags": [
+      "chats"
+    ],
+    "parameters": [
+      {
+        "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/chatId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Success. The server has returned the info about the chat.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../schemas.json#/chat"
             }
-        ],
-        "responses": {
-            "200": {
-                "description": "Запрос успешно обработан. Сервер вернул информацию о чате.",
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "../schemas.json#chat"
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
     }
+  }
 }

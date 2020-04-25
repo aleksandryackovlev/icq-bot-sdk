@@ -1,25 +1,26 @@
 {
-    "get": {
-        "summary": "Разблокировать пользователя в чате",
-        "description": "Для вызова этого метода бот должен быть администратором в чате.",
-        "tags": [
-            "chats"
-        ],
-        "parameters": [
-            {
-               "$ref": "../params.json#token"
-            },
-            {
-                "$ref": "../params.json#groupOrChannelId"
-            },
-            {
-                "$ref": "../params.json#userId"
-            }
-        ],
-        "responses": {
-            "200": {
-                "$ref": "../responses.json#200ok"
-            }
-        }
+  "get": {
+    "operationId": "chats_unblockUser",
+    "summary": "Unblock a user in a chat",
+    "description": "The bot has to be an adming of the chat in order to be able to perform this action",
+    "tags": [
+      "chats"
+    ],
+    "parameters": [
+      {
+         "$ref": "../params.json#/token"
+      },
+      {
+        "$ref": "../params.json#/groupOrChannelId"
+      },
+      {
+        "$ref": "../params.json#/userId"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../responses.json#/200ok"
+      }
     }
+  }
 }
