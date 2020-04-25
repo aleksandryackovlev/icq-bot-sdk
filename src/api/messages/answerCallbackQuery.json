@@ -1,6 +1,6 @@
 {
   "get": {
-    "operationId": "message_answerCallbackQuery",
+    "operationId": "messages_answerCallbackQuery",
     "summary": "A button click handler",
     "description": "Use the method whenever the event [callbackQuery] is received",
     "tags": [

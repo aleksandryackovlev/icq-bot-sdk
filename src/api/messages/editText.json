@@ -1,6 +1,6 @@
 {
   "get": {
-    "operationId": "message_editText",
+    "operationId": "messages_editText",
     "summary": "Edit a message",
     "tags": [
       "messages"

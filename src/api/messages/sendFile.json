@@ -1,6 +1,6 @@
 {
   "get": {
-    "operationId": "message_sendFile",
+    "operationId": "messages_sendFile",
     "summary": "Send a previously loaded file",
     "tags": [
       "messages"
@@ -38,7 +38,7 @@
     }
   },
   "post": {
-    "operationId": "message_uploadAndSendFile",
+    "operationId": "messages_uploadAndSendFile",
     "summary": "Upload and send a new file",
     "tags": [
       "messages"

@@ -1,6 +1,6 @@
 {
   "get": {
-    "operationId": "message_deleteMessages",
+    "operationId": "messages_deleteMessages",
     "summary": "Delete messages",
     "description": "There are some limitations when the method could be used. See the official docs for more details",
     "tags": [

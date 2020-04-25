@@ -1,6 +1,6 @@
 {
   "get": {
-    "operationId": "message_sendVoice",
+    "operationId": "messages_sendVoice",
     "summary": "Send a previously uploaded voice message",
     "description": "The format of a message should be [aac](https://ru.wikipedia.org/wiki/Advanced_Audio_Coding), [ogg](https://ru.wikipedia.org/wiki/Ogg) or [m4a](https://ru.wikipedia.org/wiki/MPEG-4_Part_14).",
     "tags": [
@@ -36,7 +36,7 @@
     }
   },
   "post": {
-    "operationId": "message_uploadAndSendVoice",
+    "operationId": "messages_uploadAndSendVoice",
     "summary": "Upload and send a new voice message",
     "description": "The format of a message should be [aac](https://ru.wikipedia.org/wiki/Advanced_Audio_Coding), [ogg](https://ru.wikipedia.org/wiki/Ogg) or [m4a](https://ru.wikipedia.org/wiki/MPEG-4_Part_14).",
     "tags": [
