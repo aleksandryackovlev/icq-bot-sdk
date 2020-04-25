@@ -9,14 +9,20 @@ const ICQClient = ({ token, apiUrl = 'https://api.icq.net/bot/v1' } = {}) => {
           ...acc,
           [prefix]: {
             ...acc.prefix,
-            [methodName]: (request = {}, options = {}) =>
+            [methodName]: ({ file, ...request } = {}, options = {}) =>
               icqApi[method](
                 {
-                  ...request,
                   query: {
                     token,
-                    ...request.query,
+                    ...request,
                   },
+                  ...(file
+                    ? {
+                        data: {
+                          file,
+                        },
+                      }
+                    : {}),
                 },
                 {
                   baseUrl: apiUrl,
