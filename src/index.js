@@ -2,8 +2,27 @@ import EventEmitter from 'events';
 
 import * as icqApi from './api/api.yaml';
 
+const createStorage = (initialEventId = 0) => {
+  let lastEventId = initialEventId;
+
+  return {
+    getId: async () => lastEventId,
+    setId: async (eventId) => {
+      lastEventId = eventId;
+
+      return lastEventId;
+    },
+  };
+};
+
 /* eslint-disable no-await-in-loop */
-const ICQClient = ({ token, apiUrl = 'https://api.icq.net/bot/v1' } = {}) => {
+const ICQClient = ({
+  token,
+  apiUrl = 'https://api.icq.net/bot/v1',
+  pollTime = 1,
+  timeout = 5,
+  eventIdStorage = createStorage(),
+} = {}) => {
   let icqClient = Object.keys(icqApi).reduce((acc, method) => {
     const [prefix, methodName] = method.split('_');
 
@@ -40,20 +59,27 @@ const ICQClient = ({ token, apiUrl = 'https://api.icq.net/bot/v1' } = {}) => {
   icqClient = {
     ...icqClient,
     isRunning: false,
-    sleep: (timeout) =>
+    sleep: (sleepTimeout) =>
       new Promise((resolve) => {
-        setTimeout(resolve, timeout);
+        setTimeout(resolve, sleepTimeout);
       }),
-    async startPolling({ pollTime = 1, timeout = 5, lastEventId = null } = {}) {
+    async startPolling({
+      pollTime: pollingPollTime = pollTime,
+      timeout: pollingTimeout = timeout,
+    } = {}) {
       this.isRunning = true;
-
-      const eventId = lastEventId || 0;
 
       while (this.isRunning) {
         try {
+          const lastEventId = await eventIdStorage.getId();
+
           const {
             json: { events },
-          } = await this.events.get({ lastEventId: eventId, pollTime });
+          } = await this.events.get({ lastEventId, pollTime: pollingPollTime });
+
+          if (events && events.length) {
+            await eventIdStorage.setId(events[events.length - 1].eventId);
+          }
 
           events.forEach(({ type, ...response }) => {
             this.emit(type, response);
@@ -63,7 +89,7 @@ const ICQClient = ({ token, apiUrl = 'https://api.icq.net/bot/v1' } = {}) => {
           this.emit('error', error);
         }
 
-        await this.sleep(timeout * 1000);
+        await this.sleep(pollingTimeout * 1000);
       }
     },
     stop() {
