@@ -2,33 +2,33 @@
 ICQ New Bot SDK
 
 ## Methods
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*ChatsApi* | [**chats.blockUser**](#chatsblockuser) | **GET** /chats/blockUser | Block a user in a chat
-*ChatsApi* | [**chats.getAdmins**](#chatsgetadmins) | **GET** /chats/getAdmins | Get the list of admins
-*ChatsApi* | [**chats.getBlockedUsers**](#chatsgetblockedusers) | **GET** /chats/getBlockedUsers | Get the list of all users that have been banned in the chat
-*ChatsApi* | [**chats.getInfo**](#chatsgetinfo) | **GET** /chats/getInfo | Get the info about a chat
-*ChatsApi* | [**chats.getMembers**](#chatsgetmembers) | **GET** /chats/getMembers | Get the list of all members of a chat
-*ChatsApi* | [**chats.getPendingUsers**](#chatsgetpendingusers) | **GET** /chats/getPendingUsers | Get the list of users waiting to be accepted into chat.
-*ChatsApi* | [**chats.pinMessage**](#chatspinmessage) | **GET** /chats/pinMessage | Pin a missage in the chat
-*ChatsApi* | [**chats.resolvePending**](#chatsresolvepending) | **GET** /chats/resolvePending | Decide whether to accept or not pending users.
-*ChatsApi* | [**chats.sendActions**](#chatssendactions) | **GET** /chats/sendActions | Send an action to a chat
-*ChatsApi* | [**chats.setAbout**](#chatssetabout) | **GET** /chats/setAbout | Change the description of a chat
-*ChatsApi* | [**chats.setRules**](#chatssetrules) | **GET** /chats/setRules | Change the rules for the chat
-*ChatsApi* | [**chats.setTitle**](#chatssettitle) | **GET** /chats/setTitle | Change the title of a chat
-*ChatsApi* | [**chats.unblockUser**](#chatsunblockuser) | **GET** /chats/unblockUser | Unblock a user in a chat
-*ChatsApi* | [**chats.unpinMessage**](#chatsunpinmessage) | **GET** /chats/unpinMessage | Unpin a message in a chat
-*EventsApi* | [**events.get**](#eventsget) | **GET** /events/get | Get events
-*FilesApi* | [**files.getInfo**](#filesgetinfo) | **GET** /files/getInfo | Get info about a file
-*MessagesApi* | [**messages.answerCallbackQuery**](#messagesanswercallbackquery) | **GET** /messages/answerCallbackQuery | A button click handler
-*MessagesApi* | [**messages.deleteMessages**](#messagesdeletemessages) | **GET** /messages/deleteMessages | Delete messages
-*MessagesApi* | [**messages.editText**](#messagesedittext) | **GET** /messages/editText | Edit a message
-*MessagesApi* | [**messages.sendFile**](#messagessendfile) | **GET** /messages/sendFile | Send a previously loaded file
-*MessagesApi* | [**messages.sendVoice**](#messagessendvoice) | **GET** /messages/sendVoice | Send a previously uploaded voice message
-*MessagesApi* | [**messages.sentText**](#messagessenttext) | **GET** /messages/sendText | Send a message
-*MessagesApi* | [**messages.uploadAndSendFile**](#messagesuploadandsendfile) | **POST** /messages/sendFile | Upload and send a new file
-*MessagesApi* | [**messages.uploadAndSendVoice**](#messagesuploadandsendvoice) | **POST** /messages/sendVoice | Upload and send a new voice message
-*SelfApi* | [**self.get**](#selfget) | **GET** /self/get | Get info about the bot
+Method | Description
+------------ | -------------
+[chats.blockUser](#chatsblockuser) | Block a user in a chat
+[chats.getAdmins](#chatsgetadmins) | Get the list of admins
+[chats.getBlockedUsers](#chatsgetblockedusers) | Get the list of all users that have been banned in the chat
+[chats.getInfo](#chatsgetinfo) | Get the info about a chat
+[chats.getMembers](#chatsgetmembers) | Get the list of all members of a chat
+[chats.getPendingUsers](#chatsgetpendingusers) | Get the list of users waiting to be accepted into chat.
+[chats.pinMessage](#chatspinmessage) | Pin a missage in the chat
+[chats.resolvePending](#chatsresolvepending) | Decide whether to accept or not pending users.
+[chats.sendActions](#chatssendactions) | Send an action to a chat
+[chats.setAbout](#chatssetabout) | Change the description of a chat
+[chats.setRules](#chatssetrules) | Change the rules for the chat
+[chats.setTitle](#chatssettitle) | Change the title of a chat
+[chats.unblockUser](#chatsunblockuser) | Unblock a user in a chat
+[chats.unpinMessage](#chatsunpinmessage) | Unpin a message in a chat
+[events.get](#eventsget) | Get events
+[files.getInfo](#filesgetinfo) | Get info about a file
+[messages.answerCallbackQuery](#messagesanswercallbackquery) | A button click handler
+[messages.deleteMessages](#messagesdeletemessages) | Delete messages
+[messages.editText](#messagesedittext) | Edit a message
+[messages.sendFile](#messagessendfile) | Send a previously loaded file
+[messages.sendVoice](#messagessendvoice) | Send a previously uploaded voice message
+[messages.sentText](#messagessenttext) | Send a message
+[messages.uploadAndSendFile](#messagesuploadandsendfile) | Upload and send a new file
+[messages.uploadAndSendVoice](#messagesuploadandsendvoice) | Upload and send a new voice message
+[self.get](#selfget) | Get info about the bot
 
 ## Events API
 <a name="eventsGet"></a>
