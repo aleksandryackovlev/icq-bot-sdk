@@ -91,3 +91,39 @@ A list of events since lastEventId.
   ]
 }
 ```
+
+## Files API
+
+<a name="filesGetInfo"></a>
+### **files.getInfo**
+> fileInfo filesGetInfo(token, fileId)
+#### Usage:
+```
+icqBot
+  .files.getInfo({
+    fileId: 'some-id',
+  })
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+Get info about a file
+
+#### Parameters:
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fileId** | **String**| Id of the previously uploaded file. | [required]
+
+#### Result:
+Information about a file.
+
+#### Result example:
+```
+{
+  "type": "video",
+  "size": 20971520,
+  "filename": "VIDEO.mkv",
+  "url": "https://example.com/get/88MfCLBHphvOAOeuzYhZfW5b7bcfa31ab"
+}
+```
