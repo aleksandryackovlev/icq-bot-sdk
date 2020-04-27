@@ -33,7 +33,7 @@ Method | Description
 ## Events API
 <a name="eventsGet"></a>
 ### **events.get**
-> events eventsGet(token, lastEventId, pollTime)
+#### Usage:
 ```
 icqBot
   .events.get({
@@ -43,20 +43,21 @@ icqBot
   .then(handleResult)
   .catch(handleError);
 ```
+#### Description:
 Get events
 
-    Every event has an identifier `eventId`. When you call the method you have to send the biggest knonw event id in the parameter `lastEventId`. For the first call set this param to 0. If there are no events on the server at the moment of the call, the connection is going to be kept alive. As soon as an event has occured the server will send it back and close the connection. If after `pollTime` seconds of waiting no events have been emitted, the server will return an empty array of `events`.
+Every event has an identifier `eventId`. When you call the method you have to send the biggest knonw event id in the parameter `lastEventId`. For the first call set this param to 0. If there are no events on the server at the moment of the call, the connection is going to be kept alive. As soon as an event has occured the server will send it back and close the connection. If after `pollTime` seconds of waiting no events have been emitted, the server will return an empty array of `events`.
 
-### Parameters
+#### Parameters:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **lastEventId** | **Integer**| Id of the last known event. | [required]
  **pollTime** | **Integer**| Time for keeping the connection alive (secs). | [required]
 
-### Return type
+#### Result:
 A list of events since lastEventId.
-#### Example
+#### Result example:
 ```
 {
   "events": [
