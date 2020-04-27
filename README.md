@@ -96,7 +96,6 @@ A list of events since lastEventId.
 
 <a name="filesGetInfo"></a>
 ### **files.getInfo**
-> fileInfo filesGetInfo(token, fileId)
 #### Usage:
 ```
 icqBot
@@ -125,5 +124,41 @@ Information about a file.
   "size": 20971520,
   "filename": "VIDEO.mkv",
   "url": "https://example.com/get/88MfCLBHphvOAOeuzYhZfW5b7bcfa31ab"
+}
+```
+
+## Self API
+
+<a name="selfGet"></a>
+### **self.get**
+#### Usage:
+```
+icqBot
+  .self.get()
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+
+Get info about the bot
+
+The method can be used to check if token is valid.
+
+#### Result:
+Information about the bot.
+
+#### Result example:
+```
+{
+  "userId": "747432131",
+  "nick": "test_api_bot",
+  "firstName": "TestBot",
+  "about": "The description of the bot",
+  "photo": [
+    {
+      "url": "https://example.com/expressions/getAsset?f=native&type=largeBuddyIcon&id=0110379ad781bcc4a969242f1f5a93144362"
+    }
+  ],
+  "ok": true
 }
 ```
