@@ -12,7 +12,11 @@
 [![Build Status](https://travis-ci.org/aleksandryackovlev/icq-bot-sdk.svg?branch=master)](https://travis-ci.org/aleksandryackovlev/icq-bot-sdk)
 [![size](https://packagephobia.now.sh/badge?p=icq-bot-sdk)](https://packagephobia.now.sh/result?p=icq-bot-sdk)
 # icq-bot-sdk
-ICQ New Bot SDK for Node.js
+ICQ New Bot SDK for Node.js.
+
+This client is build on top of the ICQ New bot API.
+
+The full description of the bot api can be found on [icq.com/botapi/](https://icq.com/botapi/) or [agent.mail.ru/botapi/](https://agent.mail.ru/botapi/).
 
 ## Getting Started
 
@@ -50,10 +54,6 @@ icq.startPolling(); // start event loop
 ```
 
 
-## API description
-This client is build on top of the ICQ New bot API.
-The full description of the bot api can be found on [icq.com/botapi/](https://icq.com/botapi/) or [agent.mail.ru/botapi/](https://agent.mail.ru/botapi/).
-
 ## Available methods
 Method | Description
 ------------ | -------------
@@ -78,7 +78,7 @@ Method | Description
 [messages.editText](#messagesedittext) | Edit a message
 [messages.sendFile](#messagessendfile) | Send a previously loaded file
 [messages.sendVoice](#messagessendvoice) | Send a previously uploaded voice message
-[messages.sentText](#messagessenttext) | Send a message
+[messages.sendText](#messagessenttext) | Send a message
 [messages.uploadAndSendFile](#messagesuploadandsendfile) | Upload and send a new file
 [messages.uploadAndSendVoice](#messagesuploadandsendvoice) | Upload and send a new voice message
 [self.get](#selfget) | Get info about the bot
@@ -649,6 +649,288 @@ Information about a file.
   "size": 20971520,
   "filename": "VIDEO.mkv",
   "url": "https://example.com/get/88MfCLBHphvOAOeuzYhZfW5b7bcfa31ab"
+}
+```
+
+## Messages API
+
+<a name="messagesAnswerCallbackQuery"></a>
+### **messages.answerCallbackQuery**
+
+#### Usage:
+```
+icqBot
+  .messages.answerCallbackQuery({
+    chatId: 'some-id',
+    userId: 'Some text',
+    showAlert: true,
+  })
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+A button click handler
+
+Use the method whenever the event [callbackQuery] is received
+
+#### Parameters:
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **queryId** | **String**| Id of the callback query received by the bot | [required]
+ **text** | **String**| Text that is going to be shown to a user. If not set, nothing will be shown. | [optional] [default to null]
+ **showAlert** | **Boolean**| If it has been set to `true`, the `alert` is going to be shown instead of notification. | [optional] [default to null]
+ **url** | **String**| URL to open by a client app | [optional] [default to null]
+
+#### Result example:
+```
+{
+    "ok": true // required
+}
+```
+
+<a name="messagesDeleteMessages"></a>
+### **messages.deleteMessages**
+
+#### Usage:
+```
+icqBot
+  .messages.deleteMessages({
+    chatId: 'some-id',
+    msgId: ['some-id'],
+  })
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+Delete messages
+
+There are some limitations when the method could be used. See the official docs for more details
+
+#### Parameters:
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatId** | **String**| Unique nick, group id or channel id. Id can be obtained from `events` (`chatId`). | [required]
+ **msgId** | **List** of message ids| Messages ids. | [required]
+
+#### Result example:
+```
+{
+    "ok": true // required
+}
+```
+
+<a name="messagesEditText"></a>
+### **messages.editText**
+
+#### Usage:
+```
+icqBot
+  .messages.editText({
+    chatId: 'some-id',
+    msgId: 'some-id',
+    text: 'Some text',
+  })
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+Edit a message
+
+#### Parameters:
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatId** | **String**| Unique nick, group id or channel id. Id can be obtained from `events` (`chatId`). | [required]
+ **msgId** | **Integer**| Message id. | [required]
+ **text** | **String**| Message text. A user can be tagged in a format @[userId]. | [required]
+
+#### Result example:
+```
+{
+    "ok": true // required
+}
+```
+
+<a name="messagesSendFile"></a>
+### **messages.sendFile**
+
+#### Usage:
+```
+icqBot
+  .messages.sendFile({
+    chatId: 'some-id',
+    fileId: 'some-id',
+  })
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+Send a previously loaded file
+
+#### Parameters:
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatId** | **String**| Unique nick, group id or channel id. Id can be obtained from `events` (`chatId`). | [required]
+ **fileId** | **String**| Id of the previously uploaded file. | [required]
+ **caption** | **String**| File caption. | [optional] [default to null]
+ **replyMsgId** | **List** of message ids| Id of a quoted message. Can't be sent with `forwardChatId` and `forwardMsgId` params. | [optional] [default to null]
+ **forwardChatId** | **String**| Chat id from which a message is going to be forwarded. Set only with the `forwardMsgId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+ **forwardMsgId** | **List** of message ids| Message id to forwaded. Set only with the `forwardChatId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+
+#### Result example:
+
+```
+{
+  "msgId": "57883346846815032",
+  "ok": true
+}
+```
+
+<a name="messagesSendVoice"></a>
+### **messages.sendVoice**
+
+#### Usage:
+```
+icqBot
+  .messages.sendVoice({
+    chatId: 'some-id',
+    fileId: 'some-id',
+  })
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+Send a previously uploaded voice message
+
+The format of a message should be [aac](https://ru.wikipedia.org/wiki/Advanced_Audio_Coding), [ogg](https://ru.wikipedia.org/wiki/Ogg) or [m4a](https://ru.wikipedia.org/wiki/MPEG-4_Part_14).
+
+#### Parameters:
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatId** | **String**| Unique nick, group id or channel id. Id can be obtained from `events` (`chatId`). | [required]
+ **fileId** | **String**| Id of the previously uploaded file. | [required]
+ **replyMsgId** | **List** of message ids| Id of a quoted message. Can't be sent with `forwardChatId` and `forwardMsgId` params. | [optional] [default to null]
+ **forwardChatId** | **String**| Chat id from which a message is going to be forwarded. Set only with the `forwardMsgId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+ **forwardMsgId** | **List** of message ids| Message id to forwaded. Set only with the `forwardChatId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+
+#### Result example:
+
+```
+{
+  "msgId": "57883346846815032",
+  "ok": true
+}
+```
+
+<a name="messagesSentText"></a>
+### **messages.sendText**
+
+#### Usage:
+```
+icqBot
+  .messages.sendVoice({
+    chatId: 'some-id',
+    text: 'Some text',
+  })
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+Send a message
+
+#### Parameters:
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatId** | **String**| Unique nick, group id or channel id. Id can be obtained from `events` (`chatId`). | [required]
+ **text** | **String**| Message text. A user can be tagged in a format @[userId]. | [required]
+ **replyMsgId** | **List** of message ids| Id of a quoted message. Can't be sent with `forwardChatId` and `forwardMsgId` params. | [optional] [default to null]
+ **forwardChatId** | **String**| Chat id from which a message is going to be forwarded. Set only with the `forwardMsgId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+ **forwardMsgId** | **List** of message ids| Message id to forwaded. Set only with the `forwardChatId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+
+#### Result example:
+
+```
+{
+  "msgId": "57883346846815032",
+  "ok": true
+}
+```
+
+<a name="messagesUploadAndSendFile"></a>
+### **messages.uploadAndSendFile**
+
+#### Usage:
+```
+icqBot
+  .messages.uploadAndSendFile({
+    chatId: 'some-id',
+    file: someFile,
+  })
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+Upload and send a new file
+
+#### Parameters:
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatId** | **String**| Unique nick, group id or channel id. Id can be obtained from `events` (`chatId`). | [required]
+ **caption** | **String**| File caption. | [optional] [default to null]
+ **replyMsgId** | **List** of message ids| Id of a quoted message. Can't be sent with `forwardChatId` and `forwardMsgId` params. | [optional] [default to null]
+ **forwardChatId** | **String**| Chat id from which a message is going to be forwarded. Set only with the `forwardMsgId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+ **forwardMsgId** | **List** of message ids| Message id to forwaded. Set only with the `forwardChatId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+ **file** | **File**| File | [optional] [default to null]
+
+#### Result example:
+```
+{
+  "fileId": "0dC76vcKS3XZOtG5DVs9y15d1daefa1ae",
+  "msgId": "57883346846815032",
+  "ok": true
+}
+```
+
+<a name="messagesUploadAndSendVoice"></a>
+### **messages.uploadAndSendVoice**
+
+#### Usage:
+```
+icqBot
+  .messages.uploadAndSendVoice({
+    chatId: 'some-id',
+    file: someFile,
+  })
+  .then(handleResult)
+  .catch(handleError);
+```
+#### Description:
+Upload and send a new voice message
+
+The format of a message should be [aac](https://ru.wikipedia.org/wiki/Advanced_Audio_Coding), [ogg](https://ru.wikipedia.org/wiki/Ogg) or [m4a](https://ru.wikipedia.org/wiki/MPEG-4_Part_14).
+
+#### Parameters:
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatId** | **String**| Unique nick, group id or channel id. Id can be obtained from `events` (`chatId`). | [required]
+ **replyMsgId** | **List** of message ids| Id of a quoted message. Can't be sent with `forwardChatId` and `forwardMsgId` params. | [optional] [default to null]
+ **forwardChatId** | **String**| Chat id from which a message is going to be forwarded. Set only with the `forwardMsgId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+ **forwardMsgId** | **List** of message ids| Message id to forwaded. Set only with the `forwardChatId`. Can't be set with the `replyMsgId` param. | [optional] [default to null]
+ **file** | **File**| File | [optional] [default to null]
+
+#### Result example:
+```
+{
+  "fileId": "0dC76vcKS3XZOtG5DVs9y15d1daefa1ae",
+  "msgId": "57883346846815032",
+  "ok": true
 }
 ```
 
