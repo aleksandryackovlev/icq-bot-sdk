@@ -1,5 +1,18 @@
+<div>
+  <a href="https://icq.com/botapi/#">
+    <img src="https://raw.githubusercontent.com/aleksandryackovlev/icq-bot-sdk/master/assets/logo-icq-bot.png" alt="ICQ Bot logo" width="165" height="165">
+  </a>
+  <a href="https://icq.com/">
+    <img width="420" height="165" src="https://raw.githubusercontent.com/aleksandryackovlev/icq-bot-sdk/master/assets/logo-icq-new.png" alt="ICQ New logo">
+  </a>
+</div>
+
+[![npm][npm]][npm-url]
+[![deps][deps]][deps-url]
+[![Build Status](https://travis-ci.org/aleksandryackovlev/icq-bot-sdk.svg?branch=master)](https://travis-ci.org/aleksandryackovlev/icq-bot-sdk)
+[![size](https://packagephobia.now.sh/badge?p=icq-bot-sdk)](https://packagephobia.now.sh/result?p=icq-bot-sdk)
 # icq-bot-sdk
-ICQ New Bot SDK
+ICQ New Bot SDK for Node.js
 
 ## Methods
 Method | Description
@@ -634,3 +647,19 @@ Information about the bot.
   "ok": true
 }
 ```
+
+## Contributing
+
+Please take a moment to read our contributing guidelines if you haven't yet done so.
+
+[CONTRIBUTING](./.github/CONTRIBUTING.md)
+
+## License
+
+[MIT](./LICENSE)
+
+
+[npm]: https://img.shields.io/npm/v/icq-bot-sdk.svg
+[npm-url]: https://npmjs.com/package/icq-bot-sdk
+[deps]: https://david-dm.org/aleksandryackovlev/icq-bot-sdk.svg
+[deps-url]: https://david-dm.org/aleksandryackovlev/icq-bot-sdk
