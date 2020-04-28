@@ -14,7 +14,47 @@
 # icq-bot-sdk
 ICQ New Bot SDK for Node.js
 
-## Methods
+## Getting Started
+
+Create your own bot by sending the /newbot command to Metabot and follow the instructions.
+
+## Installation
+
+```console
+$ npm install icq-bot-sdk --save
+```
+
+
+## Usage
+```
+const ICQClient = require('icq-bot-sdk').default;
+
+const icq = ICQClient({
+  token: process.env.ICQ_BOT_TOKEN, // your bot token goes here
+});
+
+icq.on('error', (error) => {
+  console.log(error);
+  icq.stop(); // stop event loop or handle error some other way
+});
+
+icq.on('newMessage', (result) => {
+  // do something with the result
+});
+
+icq.on('all', (result) => {
+  // handle every new event here
+});
+
+icq.startPolling(); // start event loop
+```
+
+
+## API description
+This client is build on top of the ICQ New bot API.
+The full description of the bot api can be found on [icq.com/botapi/](https://icq.com/botapi/) or [agent.mail.ru/botapi/](https://agent.mail.ru/botapi/).
+
+## Available methods
 Method | Description
 ------------ | -------------
 [chats.blockUser](#chatsblockuser) | Block a user in a chat
