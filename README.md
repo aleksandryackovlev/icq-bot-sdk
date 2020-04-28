@@ -1,9 +1,9 @@
 <div>
   <a href="https://icq.com/botapi/#">
-    <img src="https://raw.githubusercontent.com/aleksandryackovlev/icq-bot-sdk/master/assets/logo-icq-bot.png" alt="ICQ Bot logo" width="165" height="165">
+    <img src="https://raw.githubusercontent.com/aleksandryackovlev/icq-bot-sdk/master/assets/logo-icq-bot.png" alt="ICQ Bot logo" width="100" height="100">
   </a>
   <a href="https://icq.com/">
-    <img width="420" height="165" src="https://raw.githubusercontent.com/aleksandryackovlev/icq-bot-sdk/master/assets/logo-icq-new.png" alt="ICQ New logo">
+    <img width="255" height="100" src="https://raw.githubusercontent.com/aleksandryackovlev/icq-bot-sdk/master/assets/logo-icq-new.png" alt="ICQ New logo">
   </a>
 </div>
 
