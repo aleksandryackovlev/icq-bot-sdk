@@ -33,30 +33,61 @@ $ npm install icq-bot-sdk --save
 ```
 const ICQClient = require('icq-bot-sdk').default;
 
-const icq = ICQClient({
+const icqBot = ICQClient({
   token: process.env.ICQ_BOT_TOKEN, // your bot token goes here
 });
 
-icq.on('error', (error) => {
+icqBot.on('error', (error) => {
   console.log(error);
   icq.stop(); // stop event loop or handle error some other way
 });
 
-icq.on('newMessage', (result) => {
+icqBot.on('newMessage', (result) => {
   // do something with the result
 });
 
-icq.on('all', (result) => {
+icqBot.on('all', (result) => {
   // handle every new event here
 });
 
-icq.startPolling(); // start event loop
+icqBot.startPolling(); // start event loop
 ```
 
+## Construction
+#### Usage:
+```
+const ICQClient = require('icq-bot-sdk').default;
 
-## Available methods
+const eventIdStorage = {
+  id: 0,
+  async getId() { return this.id; },
+  async setId(id) { this.id = id; },
+},
+
+const icqBot = ICQClient({
+  token: process.env.ICQ_BOT_TOKEN, // your bot token goes here
+  pollTime: 2,
+  timeout: 3,
+  eventIdStorage,
+});
+```
+#### Description:
+Create a new instance of the ICQ Bot client.
+#### Parameters:
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **String**| Secret token that you've recieved from the Metabot. | [required]
+ **pollTime** | **Integer**| Time for keeping the connection alive (secs) during events polling. | [optional] [default to 1]
+  **timeout** | **Integer**| Time for sleeping between long polling requests to the server (secs). | [optional] [default to 5]
+  **eventIdStorage** | **Object**| Object with two async methods `getId` and `setId` to track the last known server event id. | [optional] [default to the build-in in-memory storage]
+
+## Instance methods
 Method | Description
 ------------ | -------------
+[startPolling](#startpolling) | Start polling events from the server
+[stop](#stop) | Stop polling
+[on](#on) | Subscribe to the event from server
+[off](#off) | Unsubscribe from the event from server
 [chats.blockUser](#chatsblockuser) | Block a user in a chat
 [chats.getAdmins](#chatsgetadmins) | Get the list of admins
 [chats.getBlockedUsers](#chatsgetblockedusers) | Get the list of all users that have been banned in the chat
@@ -82,6 +113,70 @@ Method | Description
 [messages.uploadAndSendFile](#messagesuploadandsendfile) | Upload and send a new file
 [messages.uploadAndSendVoice](#messagesuploadandsendvoice) | Upload and send a new voice message
 [self.get](#selfget) | Get info about the bot
+
+## General API
+<a name="startpolling"></a>
+### **startPolling**
+#### Usage:
+```
+icqBot
+  .startPolling({
+    pollTime: 1, 
+    timout: 3,
+  });
+```
+#### Description:
+Start polling events from the server.
+
+#### Parameters:
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pollTime** | **Integer**| Time for keeping the connection alive (secs). | [optional] [default to the value specified during the construction]
+  **timeout** | **Integer**| Time for sleeping between requests to the server (secs). | [optional] [default to the value specified during the construction]
+  
+<a name="stop"></a>
+### **stop**
+#### Usage:
+```
+icqBot.stop();
+```
+#### Description:
+Stop polling events from the server.
+
+<a name="on"></a>
+### **on**
+#### Usage:
+```
+icqBot
+  .on('newMessage', function handler({ payload: { chat }}) {
+      this.messages.sendVoice({
+        chatId: chat.chatId,
+        text: 'Some text',
+      })
+  });
+```
+#### Description:
+Add event listener to an event from the server.
+
+The instance of [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) is actually in the prototype chain of the `icqBot` object. It means it's possible to use any method on `EventEmitter` including the `on` method.
+
+The list of available events is: `newMessage`, `editedMessage`, `deletedMessage`, `pinnedMessage`, `unpinnedMessage`, `newChatMembers`, `leftChatMembers`, `callbackQuery`
+
+The event object passed to the event handler is depends on the type of the event. See [icq.com/botapi/](https://icq.com/botapi/#/) for more details.
+
+<a name="on"></a>
+### **on**
+#### Usage:
+```
+icqBot
+  .off('newMessage', someHandler);
+```
+#### Description:
+Remove event listener to an event from the server.
+
+The instance of [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) is actually in the prototype chain of the `icqBot` object. It means it's possible to use any method on `EventEmitter` including the `off` method.
+
+The list of available events is: `newMessage`, `editedMessage`, `deletedMessage`, `pinnedMessage`, `unpinnedMessage`, `newChatMembers`, `leftChatMembers`, `callbackQuery`
 
 ## Chats API
 <a name="chatsBlockUser"></a>
