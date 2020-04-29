@@ -66,19 +66,20 @@ const ICQClient = ({
     async startPolling({
       pollTime: pollingPollTime = pollTime,
       timeout: pollingTimeout = timeout,
+      eventIdStorage: pollingEventIdStorage = eventIdStorage,
     } = {}) {
       this.isRunning = true;
 
       while (this.isRunning) {
         try {
-          const lastEventId = await eventIdStorage.getId();
+          const lastEventId = await pollingEventIdStorage.getId();
 
           const {
             json: { events },
           } = await this.events.get({ lastEventId, pollTime: pollingPollTime });
 
           if (events && events.length) {
-            await eventIdStorage.setId(events[events.length - 1].eventId);
+            await pollingEventIdStorage.setId(events[events.length - 1].eventId);
           }
 
           events.forEach(({ type, ...response }) => {
