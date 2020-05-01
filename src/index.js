@@ -63,6 +63,32 @@ const ICQClient = ({
       new Promise((resolve) => {
         setTimeout(resolve, sleepTimeout);
       }),
+    async tick({
+      pollTime: pollingPollTime,
+      timeout: pollingTimeout,
+      eventIdStorage: pollingEventIdStorage,
+    }) {
+      try {
+        const lastEventId = await pollingEventIdStorage.getId();
+
+        const {
+          json: { events },
+        } = await this.events.get({ lastEventId, pollTime: pollingPollTime });
+
+        if (events && events.length) {
+          await pollingEventIdStorage.setId(events[events.length - 1].eventId);
+        }
+
+        events.forEach((response) => {
+          this.emit(response.type, response);
+          this.emit('all', response);
+        });
+      } catch (error) {
+        this.emit('error', error);
+      }
+
+      await this.sleep(pollingTimeout * 1000);
+    },
     async startPolling({
       pollTime: pollingPollTime = pollTime,
       timeout: pollingTimeout = timeout,
@@ -71,26 +97,11 @@ const ICQClient = ({
       this.isRunning = true;
 
       while (this.isRunning) {
-        try {
-          const lastEventId = await pollingEventIdStorage.getId();
-
-          const {
-            json: { events },
-          } = await this.events.get({ lastEventId, pollTime: pollingPollTime });
-
-          if (events && events.length) {
-            await pollingEventIdStorage.setId(events[events.length - 1].eventId);
-          }
-
-          events.forEach(({ type, ...response }) => {
-            this.emit(type, response);
-            this.emit('all', response);
-          });
-        } catch (error) {
-          this.emit('error', error);
-        }
-
-        await this.sleep(pollingTimeout * 1000);
+        await this.tick({
+          pollTime: pollingPollTime,
+          timeout: pollingTimeout,
+          eventIdStorage: pollingEventIdStorage,
+        });
       }
     },
     stop() {
