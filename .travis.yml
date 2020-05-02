@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- 10
+- 12
+install:
+- yarn install
+script:
+- yarn build
+- yarn test
+deploy:
+  provider: npm
+  cleanup: false
+  edge: true
+  email: aleksandryackovlev@yandex.ru
+  api_key:
+    secure: j9c7HtM5WwhUJyq0UpefFQCTB6pXY4nO+//NH63kVTFkq/A2e/x5qtYfZfpLz42ywoJo1R1UOL9dqyiJVJuhpKNwVhrMZE6JSSqXDxZWRKpZXaqT4RcoejXf9NvHVh4Zz3ULB8hodFzhs46haPmuyhksGAW31Y8zXO28sNVu/o+0e53KaGJJvtcBYUbqD21DmQvHMp2wf+g/ggyeoK55B6Bju7lUgNRZOxEV94k3A4cpL7E+xiAdpUYkNcyp7Q5hQav9CpaN9EaVLMdiO0LDUM3awl9JO8EhZp6/f6jLqHmPv5toqmJqjOYxb+V6Y2m+q9SjaGzf6jQ5H3e+9AiqmS8h0qqCBpT1Hc+Njl5zgUzVyd3l0M9RKsOCcT95lHmeQlX/Mgw+lyIRJyhtUFvvrUfD+d62N8buoatLwRxArpCUBAzgEAFZ/fUllLEHYn/E6a8TObfUKEk/LoI5QMkHyToodFXqE1VEScshTE4s4Vk/XJ5Hkv4GsXUymwq1iloRm7Nrq09OJqsXBL8ldo6Xo1+2IWXcbSXQgCdrhDUnOBEekwPLqOoSO1/v/uLoi/jKCm3wIVvd9gMDtSOY+QaVp76VQ6agzbsjKMVYZgwt9QHWHpt+5sajMtbmnclolIbXjzJzNBuK3HTmOp2eYTaDvPkKGNBXE1ZI6Py5GGRLZrc=
+  on:
+    tags: true
+    repo: aleksandryackovlev/icq-bot-sdk
