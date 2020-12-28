@@ -927,7 +927,7 @@ Name | Type | Description  | Notes
 #### Usage:
 ```
 icqBot
-  .messages.sendVoice({
+  .messages.sendText({
     chatId: 'some-id',
     text: 'Some text',
   })
