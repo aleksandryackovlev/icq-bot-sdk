@@ -1,6 +1,6 @@
 {
   "name": "icq-bot-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ICQ New Bot Node.js SDK",
   "main": "dist/index.js",
   "scripts": {
