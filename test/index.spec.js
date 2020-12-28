@@ -225,6 +225,7 @@ describe('ICQ bot sdk', () => {
           },
         });
       } catch (e) {
+        /* eslint-disable jest/no-conditional-expect */
         expect(eventsSpy).toHaveBeenCalledWith('error', { message: 'some message' });
       }
 
